@@ -1,0 +1,46 @@
+name: iOS Simulator Build
+
+# 실행 방법: GitHub 저장소 → Actions 탭 → "iOS Simulator Build" → Run workflow
+# 산출물: Runner.app.zip (Artifacts에서 다운로드 → appetize.io에 업로드하면 브라우저에서 iOS 구동)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths: ['app/**']
+
+jobs:
+  build-ios-sim:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Flutter 설치
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: 의존성 설치
+        run: flutter pub get
+
+      - name: 데이터 무결성 검증 (QA 게이트)
+        working-directory: .
+        run: python3 tools/validate_stories.py
+
+      - name: iOS 시뮬레이터 빌드 (서명 불필요)
+        run: flutter build ios --simulator
+
+      - name: .app 압축
+        run: |
+          cd build/ios/iphonesimulator
+          zip -r Runner.app.zip Runner.app
+
+      - name: 산출물 업로드
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-simulator-app
+          path: app/build/ios/iphonesimulator/Runner.app.zip
+          retention-days: 7

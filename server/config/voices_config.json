@@ -1,0 +1,34 @@
+{
+  "standard": [
+    {
+      "id": "std_01",
+      "name": "다정한 할아버지",
+      "desc": "차분하고 포근한 톤",
+      "imageUrl": "https://placehold.co/400x600/2A2A4A/E2B714?text=Grandpa"
+    },
+    {
+      "id": "std_02",
+      "name": "친절한 요정",
+      "desc": "밝고 통통 튀는 톤",
+      "imageUrl": "https://placehold.co/400x600/2A2A4A/E2B714?text=Fairy"
+    },
+    {
+      "id": "std_03",
+      "name": "든든한 곰아저씨",
+      "desc": "깊고 중후한 톤",
+      "imageUrl": "https://placehold.co/400x600/2A2A4A/E2B714?text=Bear"
+    },
+    {
+      "id": "std_04",
+      "name": "상냥한 언니",
+      "desc": "맑고 깨끗한 톤",
+      "imageUrl": "https://placehold.co/400x600/2A2A4A/E2B714?text=Sister"
+    }
+  ],
+  "premium": {
+    "id": "custom_cloned",
+    "name": "엄마/아빠 목소리",
+    "desc": "세상에서 제일 편안한 목소리",
+    "imageUrl": "https://placehold.co/400x600/E2B714/2A2A4A?text=Mom/Dad"
+  }
+}
